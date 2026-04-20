@@ -43,16 +43,17 @@ app.add_middleware(
 )
 
 # ── Static frontend ────────────────────────────────────────────────────────
-_FRONTEND = Path(__file__).resolve().parents[2] / "frontend"
-if _FRONTEND.exists():
-    app.mount("/static", StaticFiles(directory=str(_FRONTEND)), name="static")
+_PUBLIC = Path(__file__).resolve().parents[2] / "public"
+
+if _PUBLIC.exists():
+    app.mount("/static", StaticFiles(directory=str(_PUBLIC)), name="static")
 
 
 # ── Routes ─────────────────────────────────────────────────────────────────
 
 @app.get("/", response_class=HTMLResponse, include_in_schema=False)
 async def serve_ui():
-    index = _FRONTEND / "index.html"
+    index = _PUBLIC / "index.html"
     if index.exists():
         return FileResponse(str(index))
     return HTMLResponse("<h2>Frontend not found – open /docs to use the API.</h2>")
