@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Shopping Assistant</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <main class="container">
+    <section class="panel">
+      <h1>AI Shopping Assistant</h1>
+      <p class="subtitle">Find Shopify products by budget and preferences</p>
+
+      <form id="searchForm" class="form-grid">
+        <label>
+          Product Name
+          <input type="text" id="product_name" required placeholder="e.g. running shoes" />
+        </label>
+        <label>
+          Occasion
+          <input type="text" id="occasion" placeholder="e.g. casual, wedding, office" />
+        </label>
+        <label>
+          Budget Min
+          <input type="number" id="budget_min" min="0" step="0.01" value="0" required />
+        </label>
+        <label>
+          Budget Max
+          <input type="number" id="budget_max" min="1" step="0.01" value="100" required />
+        </label>
+        <label>
+          Preferences (comma-separated)
+          <input type="text" id="preferences" placeholder="black, lightweight" />
+        </label>
+        <label>
+          Shopify Store URL
+          <input type="url" id="shopify_store_url" required placeholder="https://allbirds.com" />
+        </label>
+        <button type="submit">Search Products</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Results</h2>
+      <p id="meta" class="meta"></p>
+      <div id="results" class="results"></div>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
